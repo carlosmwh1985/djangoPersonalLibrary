@@ -5,6 +5,9 @@
 .my_pgpass
 secrets.py
 
+# Migrations folders and files
+migrations/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
