@@ -1,5 +1,9 @@
 # .gitignore file, based on `A collection of .gitignore templates` https://github.com/github/gitignore
 
+# DB related config files
+.pg_service.*
+.my_pgpass
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
