@@ -3,6 +3,7 @@
 # DB related config files
 .pg_service.*
 .my_pgpass
+secrets.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
