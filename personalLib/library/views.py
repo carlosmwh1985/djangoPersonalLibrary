@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
         return Book.objects.order_by('libro_id')
 
 
-class DetailView(generic.DetailView):
-    template_name: str = 'library/detail.html'
+class BookDetailView(generic.DetailView):
+    template_name: str = 'library/book_detail.html'
     model = Book
 
