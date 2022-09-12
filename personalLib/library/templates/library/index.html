@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'library/table.css' %}">
+
+<h2>Book list</h2>
+{% if book_list %}
+    <table>
+        <thead>
+            <tr>
+                <th>Book Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Num. Pags</th>
+                <th>Editorial</th>
+                <th>ISBN</th>
+                <th>Read?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in book_list %}
+                <tr>
+                    <td><a href="{% url 'library:detail' book.id %}">
+                            {{ book.libro_id }}
+                        </a>
+                    </td>
+                    <td>{{ book.titulo }}</td>
+                    <td>{{ book.autor }}</td>
+                    <td>{{ book.pags }}</td>
+                    <td>{{ book.editorial }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.leido }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No book list available/found.</p>
+{% endif %}
