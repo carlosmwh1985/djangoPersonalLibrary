@@ -182,3 +182,39 @@ div.form-item p.formLabel:focus {
 .formStatus{
     color: var(--greytext) !important;
 }
+
+/* To display content in 2 columns */
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    margin-right: -200px;
+}
+
+/* To display Images */
+div.polaroid {
+    position:fixed;
+    width: 520px;
+    background-color: var(--bkg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    margin-top: 25px;
+    overflow: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div.polaroid:hover {
+    opacity: 0.7;
+}
+
+div.container {
+    text-align: center;
+    padding: 10px 20px;
+}

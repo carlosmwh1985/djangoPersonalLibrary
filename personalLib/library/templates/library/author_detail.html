@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'library/detail.css' %}">
+
+<div class="flex-container">
+    <!-- Author detail -->
+    <div class="flex-child detail">
+        <div id="formWrapper">
+            <div id="form">
+                <h1>Author Details. DB_ID: {{ author.id }}</h1>
+                <h2>Details</h2>
+                <br>
+                <div class="form-item">
+                    <p class="formLabel">Name</p>
+                    <input type="text" name="Name" value="{{ author.nombre }}"
+                        id="Name" class="form-style"/>
+                </div>
+                <div class="form-item">
+                    <p class="formLabel">Family Name</p>
+                    <input type="text" name="FamilyName" value="{{ author.apellido }}"
+                        id="FamilyName" class="form-style"/>
+                </div>
+                <div class="form-item">
+                    <p class="formLabel">Nationality</p>
+                    <input type="text" name="Country" value="{{ author.nacionalidad }}"
+                        id="Country" class="form-style"/>
+                </div>
+                <div class="form-item">
+                    <label class="form-check">
+                        Catalog Id: X66
+                    </label>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <!-- Author Image -->
+    <div class="flex-child image">
+        <div class="polaroid">
+            <a href="https://www.wikipedia.com/">
+                <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
+                     alt="{{ author }}" style="width:100%">
+                <div class="container">
+                    <p>{{ author.nombre }} {{ author.apellido }}</p>
+                </div>
+            </a>
+          </div>
+    </div>
+</div>

@@ -16,6 +16,10 @@ class IndexView(generic.ListView):
 
 
 class BookDetailView(generic.DetailView):
-    template_name: str = 'library/book_detail.html'
+    template_name = 'library/book_detail.html'
     model = Book
 
+
+class AuthorDetailView(generic.DetailView):
+    template_name = 'library/author_detail.html'
+    model = Author

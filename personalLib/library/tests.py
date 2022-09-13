@@ -36,7 +36,7 @@ class BookDetailViewTests(TestCase):
         The detail view of a book should content the most important fields of a Book: title, author, Catalog Id...
         """
         book = create_book()
-        url = reverse('library:detail', args=(book.id,))
+        url = reverse('library:book_detail', args=(book.id,))
         response = self.client.get(url)
         self.assertContains(response, book.titulo)
         self.assertContains(response, book.autor)
@@ -44,8 +44,28 @@ class BookDetailViewTests(TestCase):
 
     def test_no_book_view(self):
         """
-        The detail view of a book
+        There is no book in the DB, with the give ID
         """
-        url = reverse('library:detail', args=(1,))
+        url = reverse('library:book_detail', args=(1,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
+class AuthorDetailViewTests(TestCase):
+
+    def test_author_view(self):
+        """
+        The detail view of an author should content at leats his/her name and family name
+        """
+        author = create_author()
+        url = reverse('library:author_detail', args=(author.id,))
+        response = self.client.get(url)
+        self.assertContains(response, author.nombre)
+        self.assertContains(response, author.apellido)
+
+    def test_no_author_view(self):
+        """
+        There is no author in the DB, with the given ID
+        """
+        url = reverse('library:book_detail', args=(1,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
