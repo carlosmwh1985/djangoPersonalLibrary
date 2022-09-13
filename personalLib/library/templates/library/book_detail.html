@@ -43,7 +43,7 @@
         <div class="form-item">
             <label class="form-check">
                 Read?
-                <input type="checkbox" checked="{{ book.leido }}">
+                <input type="checkbox" {% if book.leido %} checked {% endif %}>
                 <span class="checkmark"></span>
             </label>
 
