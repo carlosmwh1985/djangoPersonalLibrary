@@ -18,7 +18,7 @@
         <tbody>
             {% for book in book_list %}
                 <tr>
-                    <td><a href="{% url 'library:detail' book.id %}">
+                    <td><a href="{% url 'library:book_detail' book.id %}">
                             {{ book.libro_id }}
                         </a>
                     </td>
