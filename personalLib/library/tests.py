@@ -1,5 +1,3 @@
-from venv import create
-
 from django.test import TestCase
 from django.urls import reverse
 
@@ -50,6 +48,7 @@ class BookDetailViewTests(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 
+
 class AuthorDetailViewTests(TestCase):
 
     def test_author_view(self):
@@ -69,3 +68,26 @@ class AuthorDetailViewTests(TestCase):
         url = reverse('library:book_detail', args=(1,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
+
+
+class BookListViewTests(TestCase):
+
+    def test_no_books(self):
+        """
+        If no books exists, it shoul return a message
+        """
+        response = self.client.get(reverse('library:index'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'No book list available/found')
+        self.assertQuerysetEqual(response.context['book_list'], [])
+    
+    def list_with_one_book(self):
+        """
+        Test the index view of a DB, with one book
+        """
+        book = create_book()
+        response = self.client.get('library:index')
+        self.assertQuerysetEqual(
+            response.context['book_list'],
+            [book]
+        )
