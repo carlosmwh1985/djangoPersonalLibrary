@@ -1,0 +1,184 @@
+/* CSS Stylesheet for a Book detail. Based mostly on https://codepen.io/Timurtek/pen/mdYOGv */
+/* Several customizations were also introduced */
+
+:root {
+    --blue: #58BFF6;
+    --greytext: #8A8A8A;
+    --grey2: #fff;
+    --bkg: #FFF
+}
+
+fieldset {
+    background-color: #CCC;
+    max-width: 500px;
+    padding: 16px;
+}
+
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    font-family: 'HelveticaNeue', 'Arial', sans-serif;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+}
+a:hover {
+    color: #AAA;
+}
+.pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
+.clear-fix {
+    clear: both;
+}
+
+#formWrapper {
+    background: rgba(0, 0, 0, .2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s ease;
+}
+
+.darken-bg {
+    background: rgba(0, 0, 0, .5) !important;
+}
+
+div#form {
+    position: absolute;
+    width: 520px;
+    height:420px;
+    height: auto;
+    background-color: var(--bkg);
+    margin: auto;
+    border-radius: 5px;
+    padding: 20px;
+    left: 5%;
+    top: 5%;
+    margin-left: -50px;
+    margin-top: -10px;
+}
+div.form-item {
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+}
+input {
+    transition: all .2s ease;
+}
+input.form-style {
+    color: var(--greytext);
+    display: block;
+    width: 90%;
+    height: 44px;
+    padding: 1px 5%;
+    border: 1px solid #CCC;
+    -moz-border-radius: 27px;
+    -webkit-border-radius: 27px;
+    border-radius: 27px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: var(--bkg);
+    font-family: 'HelveticaNeue', 'Arial', sans-serif;
+    font-size: 105%;
+    letter-spacing: .8px;
+}
+div.form-item .form-style:focus {
+    outline: none;
+    border: 1px solid var(--blue);
+    color: var(--blue);    
+}
+/* Checkbox container */
+.form-check {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 105%;
+    color: var(--greytext);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* To hide browser's default checkbox */
+.form-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+/* Custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #EEE;
+}
+/* On mouse over, add a grey background color */
+.form-check:hover input ~ .checkmark {
+    background-color: #CCC;
+}
+/* When the checkbox is checked, add a blue background */
+.form-check input:checked ~ .checkmark {
+    background-color: var(--blue);
+}
+/* Create the checkmark/indicator */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.form-check input:checked ~ .checkmark:after {
+    display: block;
+}
+/* Style the checkmark/indicator */
+.form-check .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotates(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+div.form-item p.formLabel {
+    position: absolute;
+    left: 26px;
+    top: -24px;
+    transition: all .4s ease;
+    color: var(--greytext);
+    background-color: var(--bkg);
+}
+div.form-item p.formLabel:focus {
+    outline: none;
+    color: var(--blue);
+}
+.formTop {
+    top:-22px !important;
+    left:26px;
+    background-color: var(--bkg);
+    padding: 0 5px;
+    font-size: 14px;
+    color: var(--blue) !important;
+}
+.formStatus{
+    color: var(--greytext) !important;
+}

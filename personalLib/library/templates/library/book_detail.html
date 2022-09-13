@@ -1,10 +1,59 @@
-<h1>Book Detail. DB_ID: {{ book.id }}</h1>
-<br>
-<ul>Catalog Id: {{ book.libro_id }}</ul>
-<ul>Title: {{ book.titulo }}</ul>
-<ul>Author: {{ book.autor }}</ul>
-<ul>Num. Pags.: {{ book.pags }}</ul>
-<ul>Editorial: {{ book.editorial }}</ul>
-<ul>ISBN: {{ book.isbn }}</ul>
-<ul>Read?: {{ book.leido }}</ul>
-<ul>Comments: {{ book.observaciones }}</ul>
+{% load static %}
+<link rel="stylesheet" href="{% static 'library/detail.css' %}">
+
+<div id="formWrapper">
+    <div id="form">
+        <h1>Book Details. DB_ID: {{ book.id }}</h1>
+        <h2>Details</h2>
+        <br>
+        <div class="form-item">
+            <p class="formLabel">Title</p>
+            <input type="text" name="Title" value="{{ book.titulo }}"
+                id="Title" class="form-style"/>
+        </div>
+        <div class="form-item">
+            <p class="formLabel">Author</p>
+            <input type="text" name="Author" value="{{ book.autor }}"
+                id="Author" class="form-style"/>
+        </div>
+        <div class="form-item">
+            <p class="formLabel">Num. Pags.</p>
+            <input type="value" name="NumPags" value="{{ book.pags }}"
+                id="Pags" class="form-style"/>
+        </div>
+        <div class="form-item">
+            <p class="formLabel">Editorial</p>
+            <input type="text" name="Editor" value="{{ book.editorial }}"
+                id="Editor" class="form-style"/>
+        </div>
+        <br>
+        <h2>ID Numbers</h2>
+        <div class="form-item">
+            <p class="formLabel">Catalog Id</p>
+            <input type="text" name="BookId" value="{{ book.libro_id }}"
+                id="BookId" class="form-style"/>
+        </div>
+        <div class="form-item">
+            <p class="formLabel">ISBN</p>
+            <input type="text" name="ISBN" value="{{ book.isbn }}"
+                id="ISBN" class="form-style"/>
+        </div>
+        <br>
+        <h2>Notes / Comments</h2>
+        <div class="form-item">
+            <label class="form-check">
+                Read?
+                <input type="checkbox" checked="{{ book.leido }}">
+                <span class="checkmark"></span>
+            </label>
+
+        </div>
+        <br>
+        <div class="form-item">
+            <p class="formLabel">Comments</p>
+            <input type="text" name="Comments" value="{{ book.observaciones }}"
+                id="Comments" class="form-style"/>
+        </div>
+    </div>
+</div>
+
