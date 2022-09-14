@@ -34,7 +34,7 @@
                                         </th>
                                         <td>{{ book.titulo }}</td>
                                         <td>
-                                            <a href="{% url 'library:author_detail' book.get_author_id %}">
+                                            <a href="{% url 'library:author_detail' book.autor.id %}">
                                                 {{ book.autor }}
                                             </a>
                                         </td>

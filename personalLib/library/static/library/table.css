@@ -1,6 +1,15 @@
 /* CSS based on the style published by dcode
   https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l
+
+  and by colorlib
+  https://preview.colorlib.com/theme/bootstrap/table-07/
 */
+
+:root {
+  --gray-background: #2b3035;
+  --gray-border: #dee2e6;
+  --gray-cell: #343a40;
+}
 
 *,
 *::before,
@@ -15,9 +24,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #292126;
   text-align: left;
-  background-color: #2b3035;
+  background-color: var(--gray-background);
 }
 
 .container {
@@ -83,22 +92,22 @@ table {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid var(--gray-border);
 }
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid var(--gray-border);
 }
 .table tbody + tbody {
-  border-top: 2px solid #dee2e6;
+  border-top: 2px solid var(--gray-border);
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--gray-border);
 }
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--gray-border);
 }
 .table-bordered thead th,
 .table-bordered thead td {
@@ -113,7 +122,7 @@ table {
 .table-dark,
 .table-dark > th,
 .table-dark > td {
-  background-color: #c6c8ca;
+  background-color: #cac6c9;
 }
 .table-dark th,
 .table-dark td,
@@ -123,7 +132,7 @@ table {
 }
 
 .table-hover .table-dark:hover {
-  background-color: #b9bbbe;
+  background-color: #beb9bc;
 }
 .table-hover .table-dark:hover > td,
 .table-hover .table-dark:hover > th {
@@ -132,13 +141,13 @@ table {
 
 .table-hover .thead-dark th {
   color: #fff;
-  background-color: #343a40;
+  background-color: var(--gray-cell);
   border-color: #454d55;
 }
 
 .table-dark {
   color: #fff;
-  background-color: #343a40;
+  background-color: var(--gray-cell);
 }
 .table-dark th,
 .table-dark td,
@@ -170,7 +179,7 @@ table {
   padding: 20px 30px;
   font-size: 14px;
   color: #fff;
-  border-bottom: 4px solid #2b3035;
+  border-bottom: 4px solid var(--gray-background);
 }
 .table tbody tr {
   margin-bottom: 10px;
@@ -178,7 +187,7 @@ table {
 .table tbody th, .table tbody td {
   border: none;
   padding: 20px 30px;
-  border-bottom: 3px solid #2b3035;
+  border-bottom: 3px solid var(--gray-background);
   font-size: 14px;
 }
 
