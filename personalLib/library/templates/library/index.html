@@ -1,37 +1,56 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'library/table.css' %}">
 
-<h2>Book list</h2>
-{% if book_list %}
-    <table>
-        <thead>
-            <tr>
-                <th>Book Id</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Num. Pags</th>
-                <th>Editorial</th>
-                <th>ISBN</th>
-                <th>Read?</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for book in book_list %}
-                <tr>
-                    <td><a href="{% url 'library:book_detail' book.id %}">
-                            {{ book.libro_id }}
-                        </a>
-                    </td>
-                    <td>{{ book.titulo }}</td>
-                    <td>{{ book.autor }}</td>
-                    <td>{{ book.pags }}</td>
-                    <td>{{ book.editorial }}</td>
-                    <td>{{ book.isbn }}</td>
-                    <td>{{ book.leido }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>No book list available/found.</p>
-{% endif %}
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">Book list</h2>
+            </div>
+        </div>
+        {% if book_list %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-bordered table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Book Id</th>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Num. Pags</th>
+                                    <th>Editorial</th>
+                                    <th>ISBN</th>
+                                    <th>Read?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for book in book_list %}
+                                    <tr>
+                                        <th scope=""row>
+                                            <a href="{% url 'library:book_detail' book.id %}">
+                                                {{ book.libro_id }}
+                                            </a>
+                                        </th>
+                                        <td>{{ book.titulo }}</td>
+                                        <td>
+                                            <a href="{% url 'library:author_detail' book.get_author_id %}">
+                                                {{ book.autor }}
+                                            </a>
+                                        </td>
+                                        <td>{{ book.pags }}</td>
+                                        <td>{{ book.editorial }}</td>
+                                        <td>{{ book.isbn }}</td>
+                                        <td>{{ book.leido }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>No book list available/found.</p>
+        {% endif %}
+    </div>
+</body>

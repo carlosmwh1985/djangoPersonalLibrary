@@ -7,7 +7,8 @@ class Author(models.Model):
     nacionalidad = models.CharField(max_length=100)
 
     def __str__(self):
-        return '{}, {}'.format(self.apellido, self.nombre)
+        # return '{}, {}'.format(self.apellido, self.nombre)
+        return '{} {}'.format(self.nombre, self.apellido)
 
     class Meta:
         db_table = 'tblautores'
@@ -36,6 +37,9 @@ class Book(models.Model):
     ejemplares = models.IntegerField(default=1)
     leido = models.BooleanField(default=False)
     observaciones = models.TextField()
+
+    def get_author_id(self):
+        return int(self.autor.id)
 
     def __str__(self):
         return '{}, \"{}\", by {}'.format(self.libro_id, self.titulo, self.autor.nombre)
