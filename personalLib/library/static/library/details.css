@@ -2,10 +2,13 @@
 /* Several customizations were also introduced */
 
 :root {
-    --blue: #58BFF6;
-    --greytext: #8A8A8A;
-    --grey2: #fff;
-    --bkg: #FFF
+    --blue: #58bff6;
+    --blue-button: #55b1df;
+    --gray-text: #8a8a8a;
+    --gray2: #fff;
+    --bkg: #fff;
+    --gray-background: #2b3035;
+    --gray-cell: #343a40;
 }
 
 fieldset {
@@ -20,6 +23,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     font-family: 'HelveticaNeue', 'Arial', sans-serif;
+    background-color: var(--gray-background);
 }
 
 a {
@@ -27,8 +31,18 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: #AAA;
+    text-decoration: underline;
 }
+.clear-fix{
+    clear:both;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--gray-text);
+}
+
 .pull-right {
     float: right;
 }
@@ -40,7 +54,7 @@ a:hover {
 }
 
 #formWrapper {
-    background: rgba(0, 0, 0, .2);
+    /* background: rgba(0, 0, 0, .2); */
     width: 100%;
     height: 100%;
     position: absolute;
@@ -58,7 +72,7 @@ div#form {
     width: 520px;
     height:420px;
     height: auto;
-    background-color: var(--bkg);
+    background-color: var(--gray-cell);
     margin: auto;
     border-radius: 5px;
     padding: 20px;
@@ -76,7 +90,7 @@ input {
     transition: all .2s ease;
 }
 input.form-style {
-    color: var(--greytext);
+    color: var(--gray-text);
     display: block;
     width: 90%;
     height: 44px;
@@ -88,7 +102,7 @@ input.form-style {
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background-color: var(--bkg);
+    background-color: var(--gray-cell);
     font-family: 'HelveticaNeue', 'Arial', sans-serif;
     font-size: 105%;
     letter-spacing: .8px;
@@ -106,7 +120,7 @@ div.form-item .form-style:focus {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 105%;
-    color: var(--greytext);
+    color: var(--gray-text);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -127,7 +141,7 @@ div.form-item .form-style:focus {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #EEE;
+    background-color: var(--gray-text);
 }
 /* On mouse over, add a grey background color */
 .form-check:hover input ~ .checkmark {
@@ -164,8 +178,8 @@ div.form-item p.formLabel {
     left: 26px;
     top: -24px;
     transition: all .4s ease;
-    color: var(--greytext);
-    background-color: var(--bkg);
+    color: var(--gray-text);
+    background-color: var(--gray-cell);
 }
 div.form-item p.formLabel:focus {
     outline: none;
@@ -174,13 +188,13 @@ div.form-item p.formLabel:focus {
 .formTop {
     top:-22px !important;
     left:26px;
-    background-color: var(--bkg);
+    background-color: var(--gray-background);
     padding: 0 5px;
     font-size: 14px;
     color: var(--blue) !important;
 }
 .formStatus{
-    color: var(--greytext) !important;
+    color: var(--gray-text) !important;
 }
 
 /* To display content in 2 columns */
@@ -200,8 +214,8 @@ div.form-item p.formLabel:focus {
 div.polaroid {
     position:fixed;
     width: 520px;
-    background-color: var(--bkg);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: var(--gray-cell);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     margin-bottom: 25px;
     margin-top: 25px;
     overflow: auto;
@@ -217,4 +231,31 @@ div.polaroid:hover {
 div.container {
     text-align: center;
     padding: 10px 20px;
+}
+
+input[type="submit"].back {
+	float:right;
+	width: 112px;
+	height: 37px;
+	-moz-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	border-radius: 19px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: var(--blue-button);
+	border:1px solid var(--blue-button);
+	border:none;
+	color: #fff;
+	font-weight: bold;
+    margin-top: 15px;
+}
+input[type="submit"].back:hover {
+    background-color: var(--gray-cell);
+    border:1px solid var(--blue-button);
+    color:var(--blue-button);
+    cursor:pointer;
+}
+input[type="submit"].back:focus {
+    outline: none;
 }
