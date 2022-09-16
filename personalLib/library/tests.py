@@ -74,7 +74,7 @@ class BookListViewTests(TestCase):
 
     def test_no_books(self):
         """
-        If no books exists, it shoul return a message
+        If no books exists, it should return a message
         """
         response = self.client.get(reverse('library:book_list'))
         self.assertEqual(response.status_code, 200)
@@ -83,7 +83,7 @@ class BookListViewTests(TestCase):
     
     def list_with_one_book(self):
         """
-        Test the index view of a DB, with one book
+        Test the book index view, with one book
         """
         book = create_book()
         response = self.client.get('library:book_list')
@@ -106,7 +106,7 @@ class AuthorListViewTests(TestCase):
     
     def list_with_one_author(self):
         """
-        Test the index view of a DB, with one book
+        Test the author list view, with one author
         """
         author = create_author()
         response = self.client.get('library:author_list')
@@ -114,3 +114,4 @@ class AuthorListViewTests(TestCase):
             response.context['author_list'],
             [author]
         )
+

@@ -11,12 +11,6 @@
     --gray-cell: #343a40;
 }
 
-fieldset {
-    background-color: #CCC;
-    max-width: 500px;
-    padding: 16px;
-}
-
 body {
     -webkit-background-size: cover;
     -moz-background-size: cover;

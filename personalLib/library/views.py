@@ -7,18 +7,16 @@ from django.utils import timezone
 from .models import Author, Editorial, Book
 
 
-class IndexView(generic.base.TemplateView):
+class HomeView(generic.base.TemplateView):
     """View class for the home page"""
 
-    template_name = 'library/index.html'
+    template_name = 'library/home.html'
 
-    num_books = Book.objects.all().count()
-    num_authors = Author.objects.count()
-
-    context = {
-        'num_books': num_books,
-        'num_authors': num_authors,
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['num_books'] = Book.objects.all().count()
+        context['num_authors'] = Author.objects.count()
+        return context
 
 
 class BookListView(generic.ListView):
