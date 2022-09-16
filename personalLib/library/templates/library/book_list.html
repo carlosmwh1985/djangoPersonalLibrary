@@ -1,10 +1,9 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'library/styles.css' %}">
+{% extends 'library/base_generic.html' %}
 
-<body>
+{% block content %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
+            <div class="col-md-12 text-center mb-12">
                 <h2 class="heading-section">Book List</h2>
             </div>
         </div>
@@ -53,4 +52,4 @@
             <p>No book list available/found.</p>
         {% endif %}
     </div>
-</body>
+{% endblock %}

@@ -1,7 +1,6 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'library/styles.css' %}">
+{% extends 'library/base_generic.html' %}
 
-<body>
+{% block content %}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
@@ -45,4 +44,4 @@
             <p>No author list available/found.</p>
         {% endif %}
     </div>
-</body>
+{% endblock %}
