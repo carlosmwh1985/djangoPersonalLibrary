@@ -76,7 +76,7 @@ class BookListViewTests(TestCase):
         """
         If no books exists, it shoul return a message
         """
-        response = self.client.get(reverse('library:index'))
+        response = self.client.get(reverse('library:book_list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'No book list available/found')
         self.assertQuerysetEqual(response.context['book_list'], [])
@@ -86,8 +86,31 @@ class BookListViewTests(TestCase):
         Test the index view of a DB, with one book
         """
         book = create_book()
-        response = self.client.get('library:index')
+        response = self.client.get('library:book_list')
         self.assertQuerysetEqual(
             response.context['book_list'],
             [book]
+        )
+
+
+class AuthorListViewTests(TestCase):
+
+    def test_no_authors(self):
+        """
+        If there are no authors, it should return a message
+        """
+        response = self.client.get(reverse('library:author_list'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'No author list available/found')
+        self.assertQuerysetEqual(response.context['author_list'], [])
+    
+    def list_with_one_author(self):
+        """
+        Test the index view of a DB, with one book
+        """
+        author = create_author()
+        response = self.client.get('library:author_list')
+        self.assertQuerysetEqual(
+            response.context['author_list'],
+            [author]
         )
