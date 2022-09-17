@@ -1,9 +1,8 @@
 {% extends 'base/generic.html' %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
+    <div class="container">
+        <div class="col-left">
             <!-- Author detail -->
             <div id="formWrapper">
                 <div id="form">
@@ -36,12 +35,11 @@
             </div>
         </div>
         <!-- Author Image -->
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
+        <div class="col-right">
             <div class="polaroid">
                 <a href="https://www.wikipedia.com/">
                     <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
-                        alt="{{ author }}" style="width:100%">
+                        alt="{{ author }}" style="width:100%; border-radius: 5px;">
                     <div class="container">
                         <p>{{ author }}</p>
                     </div>

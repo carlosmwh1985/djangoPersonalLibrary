@@ -17,6 +17,8 @@
   --bkg: #fff;
   --gray-background: #2b3035;
   --gray-cell: #343a40;
+  --text-in-cell: #fff;
+  --cell-hover: rgba(255, 255, 255, 0.075);
 }
 
 *,
@@ -35,10 +37,10 @@ body {
   color:var(--gray-text);
   text-align: left;
   background-color: var(--gray-background);
-  /* -webkit-background-size: cover;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -moz-background-size: cover;
-  background-size: cover; */
+  background-size: cover;
   font-family: 'HelveticaNeue', 'Arial', sans-serif;
 }
 
@@ -48,15 +50,15 @@ h3 {
   color: var(--gray-text);
 }
 
-h1 {
+/* h1 {
   text-align: center;
-}
+} */
 
-h2 {
+/* h2 {
   font-size: 26px;
   margin: 20px 0;
   text-align: center;
-}
+} */
 
 text {
   color: var(--gray-text)
@@ -84,19 +86,102 @@ p {
   clear: both;
 }
 
-.sidebar-nav {
-  margin-top: 60px;
-  padding: 5px;
-  list-style: none;
+.sidebar {
+  height: 100%;
+  width: 10%;
   background-color: var(--gray-cell);
+  position: fixed !important;
+  overflow: hidden;
+  text-align: left;
+  padding: 8px 16px;
+}
+
+.bar-title {
+  color: var(--text-in-cell)!important;
+  background-color: var(--blue)!important;
+  min-width: 10%;
+  width: 10%;
+  text-align: center;
+  padding: 20px 16px;
+  font-size: 20px;
+  margin-top: -10px;
+  margin-left: -16px;
+  position: fixed;
+}
+
+.bar-block {
+  height: 100%;
+  min-width: 10%;
+  text-align: left;
+  padding: 8px 16px;
+  margin-top: 120px;
+  margin-bottom: -80px;
+}
+
+.bar-item {
+  padding: 8px 16px;
+  float: left;
+  width: auto;
+  border: none;
+  display: block;
+  outline: 0;
+  width: 100%;
+  display: block;
+  text-align: left;
+  border: none;
+  white-space: normal;
+  float: none;
+}
+
+.bar-button {
+  border: none;
+  display: inline-block;
+  padding: 10px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bar-button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bar-button:hover {
+  color: var(--blue)!important;
+  background-color: var(--cell-hover)!important;
+  border-radius: 27px;
+}
+
+.container:after,
+.container:before {
+  content:"";
+  display: table;
+  clear: both;
 }
 
 .container {
-  width: 100%;
-  padding-right: 25px;
-  padding-left: 75px;
+  /* width: 90%; */
+  /* padding-right: 25px; */
+  /* padding-left: 75px; */
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 10%;
+  padding: 0.01em 16px;
+  text-align: left;
+  position: relative;
+}
+
+.no-hover:hover {
+  text-decoration: none;
 }
 
 .row {
@@ -105,8 +190,17 @@ p {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: 15px;
-  margin-left: 15px;
+  /* margin-right: 15px; */
+  margin-left: 0px;
+}
+
+.col-left {
+  width: 45%;
+}
+
+.col-right {
+  width: 45%;
+  margin-left: 25px;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
@@ -118,7 +212,7 @@ p {
   position: relative;
   /* width: 100%; */
   padding-right: 15px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 
 .justify-content-center {
@@ -199,7 +293,7 @@ table {
 }
 .table-hover .table-dark:hover > td,
 .table-hover .table-dark:hover > th {
-  background-color: #b9bbbe;
+  background-color: #beb9bd;
 }
 
 .table-hover .thead-dark th {
@@ -223,9 +317,11 @@ table {
 /* .table-dark.table-hover tbody tr:nth-of-type(odd) {
   background-color: rgba(255, 255, 255, 0.05);
 } */
+
+/* THIS one controls the hover on table-dark... */
 .table-dark.table-hover tbody tr:hover {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.075);
+  color: var(--text-in-cell);
+  background-color: var(--cell-hover);
 }
 
 .table-wrap {
@@ -306,9 +402,9 @@ div#form {
   border-radius: 5px;
   padding: 20px;
   left: 5%;
-  top: 5%;
+  /* top: 5%; */
   margin-left: 20px;
-  margin-top: -10px;
+  margin-top: 10px;
 }
 div.form-item {
   position: relative;
