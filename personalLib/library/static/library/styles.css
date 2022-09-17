@@ -11,6 +11,12 @@
   --gray-cell: #343a40;
   --gray-text: #8a8a8a;
   --gray-another: #292126;
+  --blue: #58bff6;
+  --blue-button: #55b1df;
+  --gray2: #fff;
+  --bkg: #fff;
+  --gray-background: #2b3035;
+  --gray-cell: #343a40;
 }
 
 *,
@@ -22,13 +28,18 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color:var(--gray-text);
   text-align: left;
   background-color: var(--gray-background);
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover; */
+  font-family: 'HelveticaNeue', 'Arial', sans-serif;
 }
 
 h1,
@@ -52,13 +63,25 @@ text {
 }
 
 a {
-  color: #007bff;
+  color: var(--blue);
   text-decoration: none;
-  background-color: transparent;
 }
 a:hover {
-  color: #0056b3;
   text-decoration: underline;
+}
+
+p {
+  order: -1;
+}
+
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.clear-fix {
+  clear: both;
 }
 
 .sidebar-nav {
@@ -258,5 +281,200 @@ tr:nth-child(even) {
 } */
 
 
+#formWrapper {
+  /* background: rgba(0, 0, 0, .2); */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all .3s ease;
+}
 
+.darken-bg {
+  background: rgba(0, 0, 0, .5) !important;
+}
+
+div#form {
+  position: absolute;
+  width: 520px;
+  height:420px;
+  height: auto;
+  background-color: var(--gray-cell);
+  margin: auto;
+  border-radius: 5px;
+  padding: 20px;
+  left: 5%;
+  top: 5%;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+div.form-item {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+}
+input {
+  transition: all .2s ease;
+}
+input.form-style {
+  color: var(--gray-text);
+  display: block;
+  width: 95%;
+  height: 50px;
+  padding: 1px 5%;
+  border: 1px solid #CCC;
+  -moz-border-radius: 27px;
+  -webkit-border-radius: 27px;
+  border-radius: 27px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: var(--gray-cell);
+  font-family: 'HelveticaNeue', 'Arial', sans-serif;
+  font-size: 100%;
+  letter-spacing: .8px;
+}
+div.form-item .form-style:focus {
+  outline: none;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+/* Checkbox container */
+.form-check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 105%;
+  color: var(--gray-text);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* To hide browser's default checkbox */
+.form-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: var(--gray-text);
+}
+/* On mouse over, add a grey background color */
+.form-check:hover input ~ .checkmark {
+  background-color: #CCC;
+}
+/* When the checkbox is checked, add a blue background */
+.form-check input:checked ~ .checkmark {
+  background-color: var(--blue);
+}
+/* Create the checkmark/indicator */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.form-check input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.form-check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotates(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+div.form-item p.form-label {
+  position: absolute;
+  left: 26px;
+  top: -28px;
+  transition: all .4s ease;
+  color: #ccc;
+  background-color: var(--gray-cell);
+  padding: 0 5px;
+}
+div.form-item .form-style:focus-within p {
+  color: var(--blue);
+}
+
+.formTop {
+  top: -22px !important;
+  left: 26px;
+  background-color: var(--gray-background);
+  padding: 0 5px;
+  font-size: 14px;
+  color: var(--blue) !important;
+}
+.formStatus{
+  color: var(--gray-text) !important;
+}
+
+/* To display Images */
+div.polaroid {
+  position:fixed;
+  width: 520px;
+  background-color: var(--gray-cell);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: 525px;
+  /* overflow: auto; */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+div.polaroid:hover {
+  opacity: 0.7;
+}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+input[type="submit"].back {
+float:right;
+width: 112px;
+height: 37px;
+-moz-border-radius: 19px;
+-webkit-border-radius: 19px;
+border-radius: 19px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+background-color: var(--blue-button);
+border:1px solid var(--blue-button);
+border:none;
+color: #fff;
+font-weight: bold;
+  margin-top: 15px;
+}
+input[type="submit"].back:hover {
+  background-color: var(--gray-cell);
+  border:1px solid var(--blue-button);
+  color:var(--blue-button);
+  cursor:pointer;
+}
+input[type="submit"].back:focus {
+  outline: none;
+}
 

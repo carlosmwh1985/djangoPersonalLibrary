@@ -1,44 +1,43 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'library/details.css' %}">
+{% extends 'library/base_generic.html' %}
 
-<!-- <body> -->
-    <div class="flex-container">
-        <!-- Author detail -->
-        <div class="flex-child detail">
+{% block content %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <!-- Author detail -->
             <div id="formWrapper">
                 <div id="form">
                     <h1>Author Details. DB_ID: {{ author.id }}</h1>
                     <h2>Details</h2>
-                    <br>
+                    <!-- <br> -->
                     <div class="form-item">
-                        <p class="formLabel">Name</p>
+                        <p class="form-label">Name</p>
                         <input type="text" name="Name" value="{{ author.nombre }}"
                             id="Name" class="form-style"/>
                     </div>
                     <div class="form-item">
-                        <p class="formLabel">Family Name</p>
+                        <p class="form-label">Family Name</p>
                         <input type="text" name="FamilyName" value="{{ author.apellido }}"
                             id="FamilyName" class="form-style"/>
                     </div>
                     <div class="form-item">
-                        <p class="formLabel">Nationality</p>
+                        <p class="form-label">Nationality</p>
                         <input type="text" name="Country" value="{{ author.nacionalidad }}"
                             id="Country" class="form-style"/>
                     </div>
                     <div class="form-item">
-                        <label class="form-check">
-                            Catalog Id: X66
-                        </label>
+                        Catalog Id: X66
                     </div>
-                    <a href="{% url 'library:index' %}">
+                    <a href="{% url 'library:book_list' %}">
                         <input type="submit" class="back pull-right" value="Back to List">
                     </a>
                     <div class="clear-fix"></div>
                 </div>
-            </div>        
+            </div>
         </div>
         <!-- Author Image -->
-        <div class="flex-child image">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
             <div class="polaroid">
                 <a href="https://www.wikipedia.com/">
                     <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
@@ -50,4 +49,4 @@
             </div>
         </div>
     </div>
-<!-- </body> -->
+{% endblock %}
