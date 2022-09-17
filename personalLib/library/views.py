@@ -1,14 +1,14 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
 from django.views import generic
-from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Author, Editorial, Book
 
 
-class HomeView(generic.base.TemplateView):
+class HomeView(LoginRequiredMixin, generic.base.TemplateView):
     """View class for the home page"""
+
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
 
     template_name = 'library/home.html'
 
@@ -16,11 +16,16 @@ class HomeView(generic.base.TemplateView):
         context = super().get_context_data(**kwargs)
         context['num_books'] = Book.objects.all().count()
         context['num_authors'] = Author.objects.count()
-        return context
+        # context['num_visits'] = request.session['num_visits']
+        return 
+    
 
-
-class BookListView(generic.ListView):
+class BookListView(LoginRequiredMixin, generic.ListView):
     """View class for the list of all books"""
+
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
+
     template_name = 'library/book_list.html'
     context_object_name = 'book_list'
 
@@ -29,8 +34,12 @@ class BookListView(generic.ListView):
         return Book.objects.order_by('libro_id')
 
 
-class AuthorListView(generic.ListView):
+class AuthorListView(LoginRequiredMixin, generic.ListView):
     """View class for the list of all authors"""
+
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
+
     template_name = 'library/author_list.html'
     context_object_name = 'author_list'
 
@@ -39,13 +48,21 @@ class AuthorListView(generic.ListView):
         return Author.objects.order_by('apellido')
 
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(LoginRequiredMixin, generic.DetailView):
     """View class for the detailed view of a particular book"""
+    
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
+    
     template_name = 'library/book_detail.html'
     model = Book
 
 
-class AuthorDetailView(generic.DetailView):
+class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     """View class for the detailed view of a particular author"""
+
+    login_url = '/accounts/login/'
+    redirect_field_name = 'redirect_to'
+
     template_name = 'library/author_detail.html'
     model = Author

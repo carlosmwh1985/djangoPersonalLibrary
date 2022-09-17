@@ -88,6 +88,7 @@ p {
   margin-top: 60px;
   padding: 5px;
   list-style: none;
+  background-color: var(--gray-cell);
 }
 
 .container {
@@ -451,21 +452,23 @@ div.container {
   padding: 10px 20px;
 }
 
-input[type="submit"].back {
-float:right;
-width: 112px;
-height: 37px;
--moz-border-radius: 19px;
--webkit-border-radius: 19px;
-border-radius: 19px;
--moz-background-clip: padding;
--webkit-background-clip: padding-box;
-background-clip: padding-box;
-background-color: var(--blue-button);
-border:1px solid var(--blue-button);
-border:none;
-color: #fff;
-font-weight: bold;
+input[type="submit"].back,
+input[type="submit"].login
+{
+  float:right;
+  width: 112px;
+  height: 37px;
+  -moz-border-radius: 19px;
+  -webkit-border-radius: 19px;
+  border-radius: 19px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: var(--blue-button);
+  border:1px solid var(--blue-button);
+  border:none;
+  color: #fff;
+  font-weight: bold;
   margin-top: 15px;
 }
 input[type="submit"].back:hover {
