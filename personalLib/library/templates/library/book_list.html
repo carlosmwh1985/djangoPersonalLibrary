@@ -3,13 +3,13 @@
 {% block content %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 text-center mb-12">
+            <!-- <div class="col-md-12 text-center mb-12"> -->
                 <h2 class="heading-section">Book List</h2>
-            </div>
+            <!-- </div> -->
         </div>
         {% if book_list %}
             <div class="row">
-                <div class="col-md-12">
+                <!-- <div class="col-md-12"> -->
                     <div class="table-wrap">
                         <table class="table table-bordered table-dark table-hover">
                             <thead>
@@ -40,13 +40,16 @@
                                         <td>{{ book.pags }}</td>
                                         <td>{{ book.editorial }}</td>
                                         <td>{{ book.isbn }}</td>
-                                        <td>{{ book.leido }}</td>
+                                        <!-- <td>{{ book.leido }}</td> -->
+                                        <td>
+                                            <i class="{{ book.book_read_icon }}"></i>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         {% else %}
             <p>No book list available/found.</p>

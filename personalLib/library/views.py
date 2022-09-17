@@ -15,7 +15,7 @@ class HomeView(LoginRequiredMixin, generic.base.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['num_books'] = Book.objects.all().count()
-        context['num_authors'] = Author.objects.count()
+        context['num_authors'] = Author.objects.all().count()
         # context['num_visits'] = request.session['num_visits']
         return 
     
