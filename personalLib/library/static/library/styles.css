@@ -19,6 +19,8 @@
   --gray-cell: #343a40;
   --text-in-cell: #fff;
   --cell-hover: rgba(255, 255, 255, 0.075);
+  --red: #f44336;
+  --green: #2e7d32;
 }
 
 *,
@@ -173,6 +175,7 @@ p {
   /* width: 90%; */
   /* padding-right: 25px; */
   /* padding-left: 75px; */
+  min-width: 80%;
   margin-right: auto;
   margin-left: 10%;
   padding: 0.01em 16px;
@@ -286,6 +289,7 @@ table {
 .table-dark thead th,
 .table-dark tbody + tbody {
   border-color: #95999c;
+  text-align: left;
 }
 
 .table-hover .table-dark:hover {
@@ -325,7 +329,7 @@ table {
 }
 
 .table-wrap {
-  overflow-x: scroll;
+  overflow-x: clip;
 }
 
 .table {
@@ -342,11 +346,13 @@ table {
 .table tbody tr {
   margin-bottom: 10px;
 }
-.table tbody th, .table tbody td {
+.table tbody th,
+.table tbody td {
   border: none;
   padding: 15px 10px;
   border-bottom: 3px solid var(--gray-background);
   font-size: 14px;
+  text-align: left;
 }
 
 /* From Beautiful HTML Tables */
@@ -544,7 +550,7 @@ div.polaroid:hover {
 }
 
 div.container {
-  text-align: center;
+  text-align: left;
   padding: 10px 20px;
 }
 
@@ -577,3 +583,9 @@ input[type="submit"].back:focus {
   outline: none;
 }
 
+i.true {
+  color: var(--green);
+}
+i.false {
+  color: var(--red);
+}

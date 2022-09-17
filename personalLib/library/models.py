@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 
 class Author(models.Model):
@@ -40,6 +41,13 @@ class Book(models.Model):
 
     def get_author_id(self):
         return int(self.autor.id)
+
+    def book_read_icon(self):
+        """Function to help to recognise the `read` field as a Python Boolean"""
+        if self.leido:
+            return "fa-solid fa-circle-check true"
+        else:
+            return "fa-solid fa-circle-xmark false"
 
     def __str__(self):
         return '{}, \"{}\", by {}'.format(self.libro_id, self.titulo, self.autor.nombre)
