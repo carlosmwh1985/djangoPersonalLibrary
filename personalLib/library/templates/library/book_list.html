@@ -1,11 +1,10 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'library/table.css' %}">
+{% extends 'library/base_generic.html' %}
 
-<body>
+{% block content %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-                <h2 class="heading-section">Book list</h2>
+            <div class="col-md-12 text-center mb-12">
+                <h2 class="heading-section">Book List</h2>
             </div>
         </div>
         {% if book_list %}
@@ -27,7 +26,7 @@
                             <tbody>
                                 {% for book in book_list %}
                                     <tr>
-                                        <th scope=""row>
+                                        <th scope="row">
                                             <a href="{% url 'library:book_detail' book.id %}">
                                                 {{ book.libro_id }}
                                             </a>
@@ -53,4 +52,4 @@
             <p>No book list available/found.</p>
         {% endif %}
     </div>
-</body>
+{% endblock %}

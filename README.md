@@ -9,6 +9,7 @@ A Django based website, designed to administrate a DB with all my books!
 - `Psycopg`
 - `PostgreSQL`
 - `Django`
+- `fontawesomefree`
 - A list with all your books! (LOL!)
 
 

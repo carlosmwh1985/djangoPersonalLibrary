@@ -1,0 +1,480 @@
+/* CSS based on the style published by dcode
+  https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l
+
+  and by colorlib
+  https://preview.colorlib.com/theme/bootstrap/table-07/
+*/
+
+:root {
+  --gray-background: #2b3035;
+  --gray-border: #dee2e6;
+  --gray-cell: #343a40;
+  --gray-text: #8a8a8a;
+  --gray-another: #292126;
+  --blue: #58bff6;
+  --blue-button: #55b1df;
+  --gray2: #fff;
+  --bkg: #fff;
+  --gray-background: #2b3035;
+  --gray-cell: #343a40;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color:var(--gray-text);
+  text-align: left;
+  background-color: var(--gray-background);
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover; */
+  font-family: 'HelveticaNeue', 'Arial', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--gray-text);
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+text {
+  color: var(--gray-text)
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  order: -1;
+}
+
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.clear-fix {
+  clear: both;
+}
+
+.sidebar-nav {
+  margin-top: 60px;
+  padding: 5px;
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 75px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
+.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
+.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
+.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
+.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
+.col-xl-auto {
+  position: relative;
+  /* width: 100%; */
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.justify-content-center {
+  -webkit-box-pack: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.heading-section {
+  font-size: 28px;
+  color: var(--gray-text);
+}
+
+table {
+  font-family: sans-serif;
+  border-collapse: collapse;
+  margin: 5px 10px;
+  font-size: 0.9em;
+  min-width: 400px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: center;
+  border-top: 1px solid var(--gray-border);
+  word-wrap: break-word;
+  max-width: 400px;
+}
+.table thead th {
+  vertical-align: center;
+  border-bottom: 2px solid var(--gray-border);
+}
+.table tbody + tbody {
+  border-top: 2px solid var(--gray-border);
+}
+
+.table-bordered {
+  border: 1px solid var(--gray-border);
+}
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--gray-border);
+}
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.table-hover tbody tr:hover {
+  color: #212529;
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-dark,
+.table-dark > th,
+.table-dark > td {
+  background-color: #cac6c9;
+}
+.table-dark th,
+.table-dark td,
+.table-dark thead th,
+.table-dark tbody + tbody {
+  border-color: #95999c;
+}
+
+.table-hover .table-dark:hover {
+  background-color: #beb9bc;
+}
+.table-hover .table-dark:hover > td,
+.table-hover .table-dark:hover > th {
+  background-color: #b9bbbe;
+}
+
+.table-hover .thead-dark th {
+  color: #fff;
+  background-color: var(--gray-cell);
+  border-color: #454d55;
+}
+
+.table-dark {
+  color: #fff;
+  background-color: var(--gray-cell);
+}
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
+  border-color: #454d55;
+}
+.table-dark.table-bordered {
+  border: 0;
+}
+/* .table-dark.table-hover tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+} */
+.table-dark.table-hover tbody tr:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+.table-wrap {
+  overflow-x: scroll;
+}
+
+.table {
+  min-width: 1000px !important;
+  width: 100%;
+}
+.table thead th {
+  border: none;
+  padding: 30px 10px;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 4px solid var(--gray-background);
+}
+.table tbody tr {
+  margin-bottom: 10px;
+}
+.table tbody th, .table tbody td {
+  border: none;
+  padding: 15px 10px;
+  border-bottom: 3px solid var(--gray-background);
+  font-size: 14px;
+}
+
+/* From Beautiful HTML Tables */
+
+/* thead tr {
+  background-color: #009879;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+td, th {
+  padding: 12px 15px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #DDDDDD;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #F3F3F3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+} */
+
+
+#formWrapper {
+  /* background: rgba(0, 0, 0, .2); */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all .3s ease;
+}
+
+.darken-bg {
+  background: rgba(0, 0, 0, .5) !important;
+}
+
+div#form {
+  position: absolute;
+  width: 520px;
+  height:420px;
+  height: auto;
+  background-color: var(--gray-cell);
+  margin: auto;
+  border-radius: 5px;
+  padding: 20px;
+  left: 5%;
+  top: 5%;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+div.form-item {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+}
+input {
+  transition: all .2s ease;
+}
+input.form-style {
+  color: var(--gray-text);
+  display: block;
+  width: 95%;
+  height: 50px;
+  padding: 1px 5%;
+  border: 1px solid #CCC;
+  -moz-border-radius: 27px;
+  -webkit-border-radius: 27px;
+  border-radius: 27px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: var(--gray-cell);
+  font-family: 'HelveticaNeue', 'Arial', sans-serif;
+  font-size: 100%;
+  letter-spacing: .8px;
+}
+div.form-item .form-style:focus {
+  outline: none;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+/* Checkbox container */
+.form-check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 105%;
+  color: var(--gray-text);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* To hide browser's default checkbox */
+.form-check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: var(--gray-text);
+}
+/* On mouse over, add a grey background color */
+.form-check:hover input ~ .checkmark {
+  background-color: #CCC;
+}
+/* When the checkbox is checked, add a blue background */
+.form-check input:checked ~ .checkmark {
+  background-color: var(--blue);
+}
+/* Create the checkmark/indicator */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.form-check input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.form-check .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotates(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+div.form-item p.form-label {
+  position: absolute;
+  left: 26px;
+  top: -28px;
+  transition: all .4s ease;
+  color: #ccc;
+  background-color: var(--gray-cell);
+  padding: 0 5px;
+}
+div.form-item .form-style:focus-within p {
+  color: var(--blue);
+}
+
+.formTop {
+  top: -22px !important;
+  left: 26px;
+  background-color: var(--gray-background);
+  padding: 0 5px;
+  font-size: 14px;
+  color: var(--blue) !important;
+}
+.formStatus{
+  color: var(--gray-text) !important;
+}
+
+/* To display Images */
+div.polaroid {
+  position:fixed;
+  width: 520px;
+  background-color: var(--gray-cell);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: 525px;
+  /* overflow: auto; */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+div.polaroid:hover {
+  opacity: 0.7;
+}
+
+div.container {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+input[type="submit"].back {
+float:right;
+width: 112px;
+height: 37px;
+-moz-border-radius: 19px;
+-webkit-border-radius: 19px;
+border-radius: 19px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+background-color: var(--blue-button);
+border:1px solid var(--blue-button);
+border:none;
+color: #fff;
+font-weight: bold;
+  margin-top: 15px;
+}
+input[type="submit"].back:hover {
+  background-color: var(--gray-cell);
+  border:1px solid var(--blue-button);
+  color:var(--blue-button);
+  cursor:pointer;
+}
+input[type="submit"].back:focus {
+  outline: none;
+}
+
