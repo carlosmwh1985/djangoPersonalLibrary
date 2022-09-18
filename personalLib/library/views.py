@@ -74,5 +74,5 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         """Add to the context all books associated with this Author"""
         context = super().get_context_data(**kwargs)
-        context['books'] = Book.objects.filter(autor=self.get_object())
+        context['books_by'] = Book.objects.filter(autor=self.get_object())
         return context
