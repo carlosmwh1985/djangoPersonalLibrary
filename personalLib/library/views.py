@@ -1,17 +1,13 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Author, Editorial, Book
-
-
-# TODO: add user to perform the tests!
-
+from .models import Author, Publisher, Book
 
 
 class HomeView(LoginRequiredMixin, generic.base.TemplateView):
     """View class for the home page"""
 
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
     template_name = 'library/home.html'
@@ -20,7 +16,6 @@ class HomeView(LoginRequiredMixin, generic.base.TemplateView):
         context = super().get_context_data(**kwargs)
         context['num_books'] = Book.objects.all().count()
         context['num_authors'] = Author.objects.all().count()
-        # context['num_visits'] = request.session['num_visits']
         return 
     
 

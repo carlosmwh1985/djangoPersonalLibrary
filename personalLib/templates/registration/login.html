@@ -2,37 +2,43 @@
 
 {% block content %}
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
+<div class="container-card">
+    <div class="panel card card-dark">
 
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
-      <p>Please login to see this page.</p>
-    {% endif %}
-  {% endif %}
+        {% if form.errors %}
+            <h1>Login Error!</h1>
+            <p>Your username and password didn't match. Please try again.</p>
+        {% endif %}
 
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-  </form>
+        {% if next %}
+            {% if user.is_authenticated %}
+                <h1>Access Not Granted!</h1>
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+            {% else %}
+                <h1>User Not Logged In!</h1>
+                <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
 
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        <h1>User Login</h1>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-item">
+                <p class="form-label">User Name</p>
+                <input type="input" class="form-style" name="username" id="inputEmail" required >
+            </div>
+            <div class="form-item">
+                <p class="form-label">Password</p>
+                <input type="password" class="form-style" name="password" id="inputPass" required>
+            </div>
+            <input type="submit" class="back pull-right" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
 

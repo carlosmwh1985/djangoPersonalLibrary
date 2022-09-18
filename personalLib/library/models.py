@@ -17,7 +17,7 @@ class Author(models.Model):
     # TODO: add a function to translate family name to the catalog ID...
 
 
-class Editorial(models.Model):
+class Publisher(models.Model):
     nombre = models.CharField(max_length=255)
 
     def __str__(self):
@@ -32,7 +32,7 @@ class Book(models.Model):
     libro_id = models.CharField(max_length=20)
     titulo = models.TextField()
     autor = models.ForeignKey(Author, on_delete=models.CASCADE)
-    editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
+    editorial = models.ForeignKey(Publisher, on_delete=models.CASCADE)
     pags = models.IntegerField(default=0)
     isbn = models.CharField(max_length=21)
     ejemplares = models.IntegerField(default=1)

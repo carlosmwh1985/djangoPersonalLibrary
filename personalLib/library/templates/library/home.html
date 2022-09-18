@@ -1,14 +1,17 @@
 {% extends 'base/generic.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1>Personal Library Home</h1>
+    <div class="container-card">
+        <div class="panel card card-dark">
+            <h1>Personal Library Home</h1>
 
-        <p>Welcome! Developed by me, by Carlitos!!!</p>
-        <h2>Some Counters:</h2>
-        <ul>
-            <li><strong>Books:</strong> {{ num_books }}</li>
-            <li><strong>Authors:</strong> {{ num_authors }}</li>
-        </ul>
+            <p>Welcome {{ user.get_username }} to my personal library!</p>
+            <p>Website developed in Django by me, by Carlitos!!!</p>
+            <h2>Some Counters:</h2>
+            <ul>
+                <li><strong>Books:</strong> {{ num_books }}</li>
+                <li><strong>Authors:</strong> {{ num_authors }}</li>
+            </ul>
+        </div>
     </div>
 {% endblock %}

@@ -4,7 +4,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user
 
-from .models import Author, Book, Editorial
+from .models import Author, Book, Publisher
 
 
 def create_author(name='Test', family_name='Testing'):
@@ -13,29 +13,29 @@ def create_author(name='Test', family_name='Testing'):
         apellido=family_name
     )
 
-def create_editorial(name='Editor_Testing GmbH'):
-    return Editorial.objects.create(
+def create_publisher(name='Editor_Testing GmbH'):
+    return Publisher.objects.create(
         nombre=name
     )
 
 def create_book(cat_id='XXX', title='My Test Book', pags=666):
     author = create_author()
-    editor = create_editorial()
+    publisher = create_publisher()
     return Book.objects.create(
         libro_id=cat_id,
         titulo=title,
         autor=author,
-        editorial=editor,
+        editorial=publisher,
         pags=pags
     )
 
 def create_book_by(author, cat_id='XXX', title='My Test Book', pags=666):
-    editor = create_editorial()
+    publisher = create_publisher()
     return Book.objects.create(
         libro_id=cat_id,
         titulo=title,
         autor=author,
-        editorial=editor,
+        editorial=publisher,
         pags=pags
     )
 
