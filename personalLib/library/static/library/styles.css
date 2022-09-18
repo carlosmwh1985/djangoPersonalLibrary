@@ -7,16 +7,15 @@
 
 :root {
   --gray-background: #2b3035;
-  --gray-border: #dee2e6;
-  --gray-cell: #343a40;
+  --cell-border: #dee2e6;
+  --border-color: #ccc;
+  --background-cell: #343a40;
   --gray-text: #8a8a8a;
   --gray-another: #292126;
   --blue: #58bff6;
   --blue-button: #55b1df;
   --gray2: #fff;
   --bkg: #fff;
-  --gray-background: #2b3035;
-  --gray-cell: #343a40;
   --text-in-cell: #fff;
   --cell-hover: rgba(255, 255, 255, 0.075);
   --red: #f44336;
@@ -91,7 +90,7 @@ p {
 .sidebar {
   height: 100%;
   width: 10%;
-  background-color: var(--gray-cell);
+  background-color: var(--background-cell);
   position: fixed !important;
   overflow: hidden;
   text-align: left;
@@ -175,9 +174,9 @@ p {
   /* width: 90%; */
   /* padding-right: 25px; */
   /* padding-left: 75px; */
-  min-width: 80%;
+  min-width: 40%;
   margin-right: auto;
-  margin-left: 10%;
+  margin-left: 12%;
   padding: 0.01em 16px;
   text-align: left;
   position: relative;
@@ -188,22 +187,13 @@ p {
 }
 
 .row {
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  /* margin-right: 15px; */
+  flex-wrap: wrap; */
   margin-left: 0px;
-}
-
-.col-left {
-  width: 45%;
-}
-
-.col-right {
-  width: 45%;
-  margin-left: 25px;
+  margin-top: 16px!important;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
@@ -250,24 +240,24 @@ table {
 .table td {
   padding: 0.75rem;
   vertical-align: center;
-  border-top: 1px solid var(--gray-border);
+  border-top: 1px solid var(--cell-border);
   word-wrap: break-word;
   max-width: 400px;
 }
 .table thead th {
   vertical-align: center;
-  border-bottom: 2px solid var(--gray-border);
+  border-bottom: 2px solid var(--cell-border);
 }
 .table tbody + tbody {
-  border-top: 2px solid var(--gray-border);
+  border-top: 2px solid var(--cell-border);
 }
 
 .table-bordered {
-  border: 1px solid var(--gray-border);
+  border: 1px solid var(--cell-border);
 }
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid var(--gray-border);
+  border: 1px solid var(--cell-border);
 }
 .table-bordered thead th,
 .table-bordered thead td {
@@ -302,13 +292,13 @@ table {
 
 .table-hover .thead-dark th {
   color: #fff;
-  background-color: var(--gray-cell);
+  background-color: var(--background-cell);
   border-color: #454d55;
 }
 
 .table-dark {
   color: #fff;
-  background-color: var(--gray-cell);
+  background-color: var(--background-cell);
 }
 .table-dark th,
 .table-dark td,
@@ -384,64 +374,36 @@ tr:nth-child(even) {
 } */
 
 
-#formWrapper {
-  /* background: rgba(0, 0, 0, .2); */
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all .3s ease;
-}
-
-.darken-bg {
-  background: rgba(0, 0, 0, .5) !important;
-}
-
-div#form {
-  position: absolute;
-  width: 520px;
-  height:420px;
-  height: auto;
-  background-color: var(--gray-cell);
-  margin: auto;
-  border-radius: 5px;
-  padding: 20px;
-  left: 5%;
-  /* top: 5%; */
-  margin-left: 20px;
-  margin-top: 10px;
-}
 div.form-item {
   position: relative;
   display: block;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 input {
   transition: all .2s ease;
 }
 input.form-style {
   color: var(--gray-text);
+  background-color: var(--background-cell);
   display: block;
   width: 95%;
-  height: 50px;
+  height: 60px;
   padding: 1px 5%;
-  border: 1px solid #CCC;
+  border: 1px solid var(--border-color);
   -moz-border-radius: 27px;
   -webkit-border-radius: 27px;
   border-radius: 27px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background-color: var(--gray-cell);
-  font-family: 'HelveticaNeue', 'Arial', sans-serif;
-  font-size: 100%;
-  letter-spacing: .8px;
+  font-size: 105%;
+  letter-spacing: .9px;
 }
 div.form-item .form-style:focus {
   outline: none;
   border: 1px solid var(--blue);
   color: var(--blue);
+  transition: all .4s ease;
 }
 /* Checkbox container */
 .form-check {
@@ -476,7 +438,7 @@ div.form-item .form-style:focus {
 }
 /* On mouse over, add a grey background color */
 .form-check:hover input ~ .checkmark {
-  background-color: #CCC;
+  background-color: var(--border-color);
 }
 /* When the checkbox is checked, add a blue background */
 .form-check input:checked ~ .checkmark {
@@ -509,48 +471,17 @@ div.form-item p.form-label {
   position: absolute;
   left: 26px;
   top: -28px;
-  transition: all .4s ease;
-  color: #ccc;
-  background-color: var(--gray-cell);
-  padding: 0 5px;
+  color: var(--border-color);
+  background-color: var(--background-cell);
+  padding: 0 10px;
 }
-div.form-item .form-style:focus-within p {
+div.form-item:focus-within p {
   color: var(--blue);
-}
-
-.formTop {
-  top: -22px !important;
-  left: 26px;
-  background-color: var(--gray-background);
-  padding: 0 5px;
-  font-size: 14px;
-  color: var(--blue) !important;
-}
-.formStatus{
-  color: var(--gray-text) !important;
-}
-
-/* To display Images */
-div.polaroid {
-  position:fixed;
-  width: 520px;
-  background-color: var(--gray-cell);
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  margin-bottom: auto;
-  margin-top: auto;
-  margin-left: 525px;
-  /* overflow: auto; */
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-div.polaroid:hover {
-  opacity: 0.7;
+  transition: all .4s ease;
 }
 
 div.container {
-  text-align: left;
+  text-align: center;
   padding: 10px 20px;
 }
 
@@ -574,7 +505,7 @@ input[type="submit"].login
   margin-top: 15px;
 }
 input[type="submit"].back:hover {
-  background-color: var(--gray-cell);
+  background-color: var(--background-cell);
   border:1px solid var(--blue-button);
   color:var(--blue-button);
   cursor:pointer;
@@ -589,3 +520,54 @@ i.true {
 i.false {
   color: var(--red);
 }
+
+.container-card {
+  padding: 0.01em 16px;
+}
+
+.panel {
+  position: fixed;
+  padding: 0.01em 16px;
+  margin-left: 10%;
+}
+
+.card {
+  position: absolute;
+  width: 30%;
+  height: auto;
+  padding: 20px;
+  border-radius: 5px;
+  top: 5%;
+}
+
+.card-2 {
+  position: absolute;
+  width: 60%;
+  height: auto;
+  padding: 20px;
+  border-radius: 5px;
+  top: 55%;
+  padding: 10px 20px;
+}
+
+.card-dark {
+  color: var(--gray-text) !important;
+  background-color: var(--background-cell)!important;
+}
+
+
+/* To display Images */
+.polaroid {
+  position: absolute;
+  background-color: var(--background-cell);
+  top: 5%;
+  margin-left: 42%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+div.polaroid:hover {
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+

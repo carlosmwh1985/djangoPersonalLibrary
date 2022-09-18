@@ -1,50 +1,77 @@
 {% extends 'base/generic.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="col-left">
-            <!-- Author detail -->
-            <div id="formWrapper">
-                <div id="form">
-                    <h1>Author Details. DB_ID: {{ author.id }}</h1>
-                    <h2>Details</h2>
-                    <!-- <br> -->
-                    <div class="form-item">
-                        <p class="form-label">Name</p>
-                        <input type="text" name="Name" value="{{ author.nombre }}"
-                            id="Name" class="form-style"/>
-                    </div>
-                    <div class="form-item">
-                        <p class="form-label">Family Name</p>
-                        <input type="text" name="FamilyName" value="{{ author.apellido }}"
-                            id="FamilyName" class="form-style"/>
-                    </div>
-                    <div class="form-item">
-                        <p class="form-label">Nationality</p>
-                        <input type="text" name="Country" value="{{ author.nacionalidad }}"
-                            id="Country" class="form-style"/>
-                    </div>
-                    <div class="form-item">
-                        Catalog Id: X66
-                    </div>
-                    <a href="{% url 'library:book_list' %}">
-                        <input type="submit" class="back pull-right" value="Back to List">
-                    </a>
-                    <div class="clear-fix"></div>
-                </div>
+    <!-- Author detail -->
+    <div class="container-card">
+        <div class="panel card card-dark">
+            <h1>Author Details. DB_ID: {{ author.id }}</h1>
+            <h2>Details</h2>
+            <div class="form-item">
+                <p class="form-label">Name</p>
+                <input type="text" name="Name" value="{{ author.nombre }}"
+                    id="Name" class="form-style"/>
             </div>
-        </div>
-        <!-- Author Image -->
-        <div class="col-right">
-            <div class="polaroid">
-                <a href="https://www.wikipedia.com/">
-                    <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
-                        alt="{{ author }}" style="width:100%; border-radius: 5px;">
-                    <div class="container">
-                        <p>{{ author }}</p>
-                    </div>
-                </a>
+            <div class="form-item">
+                <p class="form-label">Family Name</p>
+                <input type="text" name="FamilyName" value="{{ author.apellido }}"
+                    id="FamilyName" class="form-style"/>
+            </div>
+            <div class="form-item">
+                <p class="form-label">Nationality</p>
+                <input type="text" name="Country" value="{{ author.nacionalidad }}"
+                    id="Country" class="form-style"/>
+            </div>
+            <div class="form-item">
+                Catalog Id: X66
             </div>
         </div>
     </div>
+    <!-- Author Image -->
+    <div class="container-card">
+        <div class="polaroid card-dark">
+            <a href="https://www.wikipedia.com/">
+                <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
+                        alt="{{ author }}"
+                        style="width: 100%; border-radius: 5px;">
+                <div class="container-card">
+                    <p>{{ author }}</p>
+                </div>                        
+            </a>
+            </div>
+    </div>
+    <!-- Books in Catalog by the author -->
+    {% if books_by %}
+        <div class="container-card" style="margin-top: 150px;">
+            <div class="panel card-2">
+                <p>Books in catalog written by {{ author }}</p>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Book Id</th>
+                                <th>Title</th>
+                                <th>Editorial</th>
+                                <th>ISBN</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                {% for book in books_by %}
+                                    <tr>
+                                        <th scope="row">
+                                            <a href="{% url 'library:book_detail' book.id %}">
+                                                {{ book.libro_id }}
+                                            </a>
+                                        </th>
+                                        <td>{{ book.titulo }}</td>
+                                        <td>{{ book.editorial }}</td>
+                                        <td>{{ book.isbn }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

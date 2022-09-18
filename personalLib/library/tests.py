@@ -1,3 +1,4 @@
+from urllib import response
 from django.test import TestCase
 from django.urls import reverse
 
@@ -17,6 +18,16 @@ def create_editorial(name='Editor_Testing GmbH'):
 
 def create_book(cat_id='XXX', title='My Test Book', pags=666):
     author = create_author()
+    editor = create_editorial()
+    return Book.objects.create(
+        libro_id=cat_id,
+        titulo=title,
+        autor=author,
+        editorial=editor,
+        pags=pags
+    )
+
+def create_book_by(author, cat_id='XXX', title='My Test Book', pags=666):
     editor = create_editorial()
     return Book.objects.create(
         libro_id=cat_id,
@@ -65,9 +76,28 @@ class AuthorDetailViewTests(TestCase):
         """
         There is no author in the DB, with the given ID
         """
-        url = reverse('library:book_detail', args=(1,))
+        url = reverse('library:author_detail', args=(1,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
+    
+    # def test_get_all_books_by_author(self):
+    #     """
+    #     One should have all the books writen by a given author, when visiting
+    #     the Author Detail View
+    #     """
+    #     author1 = create_author(name='Test1', family_name='Test1')
+    #     author2 = create_author(name='Test2', family_name='Test2')
+    #     books_by_1 = []
+    #     books_by_2 = []
+    #     for i in range(3):
+    #         books_by_1.append(create_book_by(author1, cat_id='XXX_T1{}'.format(i+1)))
+    #     for i in range(2):
+    #         books_by_2.append(create_book_by(author2, cat_id='XXX_T2{}'.format(i+1)))
+        
+    #     url = reverse('library:author_detail', args=(author1.id,))
+    #     response = self.client.get(url)
+    #     print(books_by_1)
+    #     self.assertQuerysetEqual(response.context['books'], books_by_1)
 
 
 class BookListViewTests(TestCase):
