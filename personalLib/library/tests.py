@@ -7,6 +7,13 @@ from django.contrib.auth import get_user
 from .models import Author, Book, Publisher
 
 
+CREDENTIALS = {
+    'username': 'test_user',
+    'email': 'test_user@test_email.com',
+    'password': 'testuser_abc_1234',
+    'path_login': '/login/'
+}
+
 def create_author(name='Test', family_name='Testing'):
     return Author.objects.create(
         nombre=name,
@@ -39,18 +46,22 @@ def create_book_by(author, cat_id='XXX', title='My Test Book', pags=666):
         pags=pags
     )
 
-def create_user(user_name, email, password):
-    return User.objects.create_user(user_name, email, password)
+def create_user(credentials):
+    return User.objects.create_user(
+        username=credentials.get('username'),
+        email=credentials.get('email'),
+        password=credentials.get('password')
+    )
 
 
 class BookDetailViewTests(TestCase):
 
     def setUp(self):
-        self.user_name = 'test_user'
-        self.password = 'testuser_abc_1234'
-        self.email = 'test_user@test_email.com'
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
         self.client = Client()
-        self.user = create_user(self.user_name, self.email, self.password)
+        self.user = create_user(CREDENTIALS)
 
     def test_book_view(self):
         """
@@ -78,11 +89,11 @@ class BookDetailViewTests(TestCase):
 class AuthorDetailViewTests(TestCase):
 
     def setUp(self):
-        self.user_name = 'test_user'
-        self.password = 'testuser_abc_1234'
-        self.email = 'test_user@test_email.com'
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
         self.client = Client()
-        self.user = create_user(self.user_name, self.email, self.password)
+        self.user = create_user(CREDENTIALS)
 
     def test_author_view(self):
         """
@@ -128,11 +139,11 @@ class AuthorDetailViewTests(TestCase):
 class BookListViewTests(TestCase):
 
     def setUp(self):
-        self.user_name = 'test_user'
-        self.password = 'testuser_abc_1234'
-        self.email = 'test_user@test_email.com'
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
         self.client = Client()
-        self.user = create_user(self.user_name, self.email, self.password)
+        self.user = create_user(CREDENTIALS)
 
     def test_no_books(self):
         """
@@ -161,11 +172,11 @@ class BookListViewTests(TestCase):
 class AuthorListViewTests(TestCase):
 
     def setUp(self):
-        self.user_name = 'test_user'
-        self.password = 'testuser_abc_1234'
-        self.email = 'test_user@test_email.com'
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
         self.client = Client()
-        self.user = create_user(self.user_name, self.email, self.password)
+        self.user = create_user(CREDENTIALS)
 
     def test_no_authors(self):
         """
@@ -194,20 +205,17 @@ class AuthorListViewTests(TestCase):
 class LoginTest(TestCase):
 
     def setUp(self):
-        self.user_name = 'test_user'
-        self.password = 'testuser_abc_1234'
-        self.email = 'test_user@test_email.com'
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
+        self.path_login = CREDENTIALS.get('path_login')
         self.client = Client()
-        self.user = create_user(self.user_name, self.email, self.password)
-        self.credentials = {
-            'username': self.user_name,
-            'password': self.password,
-        }
+        self.user = create_user(CREDENTIALS)
+        self.credentials = CREDENTIALS
         self.false_credentials = {
             'username': self.user_name,
             'password': 'xXx',
         }
-        self.path_login = '/accounts/login/'
 
     def test_login(self):
         response = self.client.post(
@@ -223,7 +231,7 @@ class LoginTest(TestCase):
     
     def test_login_wrong_password(self):
         response = self.client.post(
-            '/accounts/login/',
+            self.path_login,
             self.false_credentials,
             follow=True)
         self.assertFalse(response.context['user'].is_authenticated)
