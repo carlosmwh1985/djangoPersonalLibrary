@@ -203,7 +203,7 @@ p {
 
 .col-right {
   width: 45%;
-  margin-left: 25px;
+  margin-left: 50%;
 }
 
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
@@ -518,7 +518,7 @@ div.form-item .form-style:focus-within p {
   color: var(--blue);
 }
 
-.formTop {
+/* .formTop {
   top: -22px !important;
   left: 26px;
   background-color: var(--gray-background);
@@ -528,29 +528,10 @@ div.form-item .form-style:focus-within p {
 }
 .formStatus{
   color: var(--gray-text) !important;
-}
-
-/* To display Images */
-div.polaroid {
-  position:fixed;
-  width: 520px;
-  background-color: var(--gray-cell);
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  margin-bottom: auto;
-  margin-top: auto;
-  margin-left: 525px;
-  /* overflow: auto; */
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-div.polaroid:hover {
-  opacity: 0.7;
-}
+} */
 
 div.container {
-  text-align: left;
+  text-align: center;
   padding: 10px 20px;
 }
 
@@ -588,4 +569,28 @@ i.true {
 }
 i.false {
   color: var(--red);
+}
+
+/* To display Images */
+div.polaroid {
+  position: static;
+  width: 100%;
+  background-color: var(--gray-cell);
+  margin-bottom: auto;
+  margin-top: auto;
+  /* margin-left: 525px; */
+  /* overflow: auto; */
+  /* border-radius: 5px; */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+div.polaroid:hover {
+  opacity: 0.7;
+}
+
+img.card {
+  border-radius: 50px;
+  /* width: inherit; */
+  margin-left: 75%;
 }

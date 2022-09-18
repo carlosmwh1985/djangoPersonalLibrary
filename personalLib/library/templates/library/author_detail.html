@@ -26,10 +26,11 @@
                     </div>
                     <div class="form-item">
                         Catalog Id: X66
+                        <!-- {{ books }} -->
                     </div>
-                    <a href="{% url 'library:book_list' %}">
+                    <!-- <a href="{% url 'library:book_list' %}">
                         <input type="submit" class="back pull-right" value="Back to List">
-                    </a>
+                    </a> -->
                     <div class="clear-fix"></div>
                 </div>
             </div>
@@ -39,10 +40,9 @@
             <div class="polaroid">
                 <a href="https://www.wikipedia.com/">
                     <img src="https://t3.ftcdn.net/jpg/02/18/08/74/360_F_218087403_fSOfyVN3azDznIeQ1rFCmd6bXAz9CbXi.jpg"
-                        alt="{{ author }}" style="width:100%; border-radius: 5px;">
-                    <div class="container">
-                        <p>{{ author }}</p>
-                    </div>
+                         class="card"     
+                         alt="{{ author }}">
+                    <p>{{ author }}</p>
                 </a>
             </div>
         </div>

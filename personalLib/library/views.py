@@ -4,6 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Author, Editorial, Book
 
 
+# TODO: add user to perform the tests!
+
+
+
 class HomeView(LoginRequiredMixin, generic.base.TemplateView):
     """View class for the home page"""
 
@@ -46,7 +50,7 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         """Return all authors, ordered ba Family Name"""
         return Author.objects.order_by('apellido')
-
+    
 
 class BookDetailView(LoginRequiredMixin, generic.DetailView):
     """View class for the detailed view of a particular book"""
@@ -66,3 +70,9 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
 
     template_name = 'library/author_detail.html'
     model = Author
+
+    def get_context_data(self, **kwargs):
+        """Add to the context all books associated with this Author"""
+        context = super().get_context_data(**kwargs)
+        context['books'] = Book.objects.filter(autor=self.get_object())
+        return context
