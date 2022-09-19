@@ -556,12 +556,18 @@ i.false {
   height: auto;
   padding: 20px;
   border-radius: 5px;
-  margin-top: 200px;
-  /* top: 200px; */
-  padding: 10px 20px;
+  margin-top: 550px;
 }
 
 .card-dark {
+  color: var(--gray-text) !important;
+  background-color: var(--background-cell)!important;
+}
+
+.card-dark-small {
+  width: 49%;
+  padding: 10px 20px;
+  margin-left: 10px;
   color: var(--gray-text) !important;
   background-color: var(--background-cell)!important;
 }

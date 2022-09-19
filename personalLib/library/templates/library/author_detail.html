@@ -34,7 +34,7 @@
                         alt="{{ author }}"
                         style="width: 100%; border-radius: 5px;">
                 <div class="container-card">
-                    <p>{{ author }}</p>
+                    <p class="text-center">{{ author }}</p>
                 </div>                        
             </a>
             </div>
@@ -42,8 +42,10 @@
     <!-- Books in Catalog by the author -->
     {% if books_by %}
         <div class="container-card">
-            <div class="panel card-low card-dark">
-                <p>Books in catalog written by {{ author }}</p>
+            <div class="panel card-low">
+                <div class="card-dark-small">
+                    <p>Books in catalog written by {{ author }}</p>
+                </div>                
                 <div class="table-wrap">
                     <table class="table table-bordered table-dark table-hover">
                         <thead>
