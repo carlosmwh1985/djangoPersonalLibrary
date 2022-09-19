@@ -1,7 +1,7 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Author, Publisher, Book
+from .models import Author, DeweySystem, Publisher, Book
 
 
 class HomeView(LoginRequiredMixin, generic.base.TemplateView):
@@ -71,3 +71,18 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['books_by'] = Book.objects.filter(autor=self.get_object())
         return context
+
+
+class CatalogSystemView(LoginRequiredMixin, generic.ListView):
+    """View class for the whole Dewey-Catalog system, used to catalog the whole library.\n
+    Use it only as a reference"""
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
+
+    template_name = 'library/dewey_system.html'
+    context_object_name = 'determinants'
+
+    def get_queryset(self):
+        """Return all the Ids and Subjects of the catalog (Dewey System)"""
+        return DeweySystem.objects.order_by('id')
