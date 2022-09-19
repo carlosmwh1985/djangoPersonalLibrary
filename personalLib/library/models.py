@@ -27,7 +27,6 @@ class Publisher(models.Model):
         db_table = 'tbleditoriales'
 
 
-
 class Book(models.Model):
     libro_id = models.CharField(max_length=20)
     titulo = models.TextField()
@@ -55,3 +54,58 @@ class Book(models.Model):
     class Meta:
         db_table = 'tbllibros'
 
+
+class DeweySystem(models.Model):
+    id = models.CharField(max_length=4, primary_key=True)
+    nombre = models.TextField()
+
+    class Meta:
+        db_table = 'tblclasificaciondewey'
+
+
+class LiteratureInSpanish(models.Model):
+    id = models.CharField(max_length=4, primary_key=True)
+    pais = models.CharField(max_length=50)
+
+    class Meta:
+        db_table = 'tblliteraturahispanoamericana_860'
+
+
+class CatalogCodes(models.Model):
+    num = models.CharField(max_length=10)
+    determinante = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'tbldetforma'
+
+
+class LanguageCodes(models.Model):
+    num = models.CharField(max_length=10)
+    determinante = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'tbldetlengua'
+
+
+class HistoryCodes(models.Model):
+    num = models.CharField(max_length=10)
+    determinante = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'tbldethistoria'
+
+
+class LiteratureCodes(models.Model):
+    num = models.CharField(max_length=10)
+    determinante = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'tbldetliteratura'
+
+
+class AuthorNameCodes(models.Model):
+    numero = models.CharField(max_length=1)
+    letras = models.CharField(max_length=18)
+
+    class Meta:
+        db_table = 'tbldetnombreautor'
