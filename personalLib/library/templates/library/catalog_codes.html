@@ -1,0 +1,175 @@
+{% extends 'base/generic.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="heading-section">Used Dewey Catalogation System</h2>
+        </div>
+    </div>
+
+    <div class="row-padding margin-top">
+
+        <div class="card-fourth" style="margin-left: 200px;">
+            {% if determinants %}
+                <h3>General Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in determinants %}
+                                <tr>
+                                    <td>{{ d.num }}</td>
+                                    <td>{{ d.determinante }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No catalog items are available/found for Catalog Codes</p>
+            {% endif %}
+        </div>
+
+        <div class="card-fourth">
+            {% if det_language %}
+                <h3>Language Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in det_language %}
+                                <tr>
+                                    <td>{{ d.num }}</td>
+                                    <td>{{ d.determinante }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> 
+            {% else %}
+                <p>No catalog items are available/found for Language Codes</p>
+            {% endif %}
+        </div>
+
+        <div class="card-fourth">
+            {% if det_history %}
+                <h3>History Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in det_history %}
+                                <tr>
+                                    <td>{{ d.num }}</td>
+                                    <td>{{ d.determinante }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No catalog items are available/found for History Codes</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="row-padding margin-top">
+
+        <div class="card-fourth" style="margin-left: 200px;">
+            {% if det_author_name %}
+                <h3>Author Name Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Letters</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in det_author_name %}
+                                <tr>
+                                    <td>{{ d.numero }}</td>
+                                    <td>{{ d.letras }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No catalog items are available/found for Author Name Codes</p>
+            {% endif %}
+        </div>
+
+
+        <div class="card-fourth">
+            {% if det_literature %}
+                <h3>Literature Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in det_literature %}
+                                <tr>
+                                    <td>{{ d.num }}</td>
+                                    <td>{{ d.determinante }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No catalog items are available/found for Literature Codes</p>
+            {% endif %}
+        </div>
+
+        <div class="card-fourth">
+            {% if det_spanish_lit %}
+                <h3>Literature in Spanish Codes</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Country</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in det_spanish_lit %}
+                                <tr>
+                                    <td>{{ d.id }}</td>
+                                    <td>{{ d.pais }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No catalog items are available/found for Spanish Literature Codes</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

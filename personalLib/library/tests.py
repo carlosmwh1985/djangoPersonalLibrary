@@ -4,7 +4,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user
 
-from .models import Author, Book, Publisher
+from .models import Author, Book, DeweySystem, Publisher
 
 
 CREDENTIALS = {
@@ -240,3 +240,35 @@ class LoginTest(TestCase):
             'Your username and password didn\'t match. Please try again.'
         )
 
+
+class CatalogViewsTests(TestCase):
+
+    def setUp(self):
+        self.user_name = CREDENTIALS.get('username')
+        self.password = CREDENTIALS.get('password')
+        self.email = CREDENTIALS.get('email')
+        self.client = Client()
+        self.user = create_user(CREDENTIALS)
+    
+    def test_no_dewey_catalog(self):
+        """
+        If there are no IDs in the catalog, it should return a message
+        """
+        self.client.login(username=self.user_name, password=self.password)
+        response = self.client.get(reverse('library:catalog_system'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'No catalog items are available')
+        self.assertQuerysetEqual(response.context['determinants'], [])
+    
+    def test_list_with_one_catalog_item(self):
+        """
+        Test the Catalog System view, with one item
+        """
+        self.client.login(username=self.user_name, password=self.password)
+        cat_item = DeweySystem.objects.create(id="XXX", nombre="Test")
+        response = self.client.get(reverse('library:catalog_system'))
+        self.assertEqual(response.status_code, 200)
+        self.assertQuerysetEqual(
+            response.context['determinants'],
+            [cat_item]
+        )

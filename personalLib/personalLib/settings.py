@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'fontawesomefree',
+    'unidecode',
     'library.apps.LibraryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
