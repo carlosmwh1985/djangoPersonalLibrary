@@ -542,11 +542,22 @@ i.false {
 
 .card-2 {
   position: absolute;
+  width: 40%;
+  height: auto;
+  padding: 15px 30px;
+  border-radius: 5px;
+  top: 5%;
+  margin-left: 15%;
+}
+
+.card-low {
+  position: absolute;
   width: 60%;
   height: auto;
   padding: 20px;
   border-radius: 5px;
-  top: 55%;
+  margin-top: 200px;
+  /* top: 200px; */
   padding: 10px 20px;
 }
 
