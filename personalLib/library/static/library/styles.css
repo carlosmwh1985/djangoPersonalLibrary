@@ -18,8 +18,8 @@
   --bkg: #fff;
   --text-in-cell: #fff;
   --cell-hover: rgba(255, 255, 255, 0.075);
-  --red: #f44336;
-  --green: #2e7d32;
+  --red: #e57373;
+  --green: #81c784;
 }
 
 *,
@@ -323,8 +323,8 @@ table {
 }
 
 .table {
-  min-width: 1000px !important;
-  width: 100%;
+  min-width: 400px !important;
+  width: 80%;
 }
 .table thead th {
   border: none;
@@ -343,6 +343,11 @@ table {
   border-bottom: 3px solid var(--gray-background);
   font-size: 14px;
   text-align: left;
+}
+
+.table-narrow {
+  min-width: 100px !important;
+  width: 40%;
 }
 
 /* From Beautiful HTML Tables */
