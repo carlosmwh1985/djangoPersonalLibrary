@@ -1,33 +1,28 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Author, Editorial, Book
-
-
-# TODO: add user to perform the tests!
-
+from .models import Author, Publisher, Book
 
 
 class HomeView(LoginRequiredMixin, generic.base.TemplateView):
     """View class for the home page"""
 
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
     template_name = 'library/home.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['num_books'] = Book.objects.all().count()
-        context['num_authors'] = Author.objects.all().count()
-        # context['num_visits'] = request.session['num_visits']
+        context['total_books'] = Book.objects.all().count()
+        context['total_authors'] = Author.objects.all().count()
         return 
     
 
 class BookListView(LoginRequiredMixin, generic.ListView):
     """View class for the list of all books"""
 
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
     template_name = 'library/book_list.html'
@@ -41,7 +36,7 @@ class BookListView(LoginRequiredMixin, generic.ListView):
 class AuthorListView(LoginRequiredMixin, generic.ListView):
     """View class for the list of all authors"""
 
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
     template_name = 'library/author_list.html'
@@ -55,7 +50,7 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
 class BookDetailView(LoginRequiredMixin, generic.DetailView):
     """View class for the detailed view of a particular book"""
     
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
     
     template_name = 'library/book_detail.html'
@@ -65,7 +60,7 @@ class BookDetailView(LoginRequiredMixin, generic.DetailView):
 class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     """View class for the detailed view of a particular author"""
 
-    login_url = '/accounts/login/'
+    login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
     template_name = 'library/author_detail.html'
