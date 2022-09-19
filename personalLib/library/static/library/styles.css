@@ -31,7 +31,6 @@
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -42,13 +41,16 @@ body {
   -moz-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  font-family: 'HelveticaNeue', 'Arial', sans-serif;
 }
 
 h1,
 h2,
 h3 {
   color: var(--gray-text);
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* h1 {
@@ -114,9 +116,9 @@ p {
   height: 100%;
   min-width: 10%;
   text-align: left;
-  padding: 8px 16px;
+  padding: 8px 1px;
   margin-top: 120px;
-  margin-bottom: -80px;
+  /* margin-bottom: -80px; */
 }
 
 .bar-item {
@@ -157,15 +159,40 @@ p {
   user-select: none;
 }
 
+.button {
+  font-size: 105%;
+}
+
 .bar-button:hover {
   color: var(--blue)!important;
   background-color: var(--cell-hover)!important;
   border-radius: 27px;
 }
 
+.accordion {
+  border: none;
+  outline: none;
+  content: "\F0D9"; /*Carret-Left*/
+}
+
+.accordion:after {
+  content: "\F0D9"; /*Carret-Left*/
+}
+
+.active:after {
+  content: '\F0D7'; /*Carret-Down*/
+}
+
+.accordion-panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
 .container:after,
 .container:before {
-  content:"";
+  content: "";
   display: table;
   clear: both;
 }
@@ -224,7 +251,6 @@ p {
 }
 
 table {
-  font-family: sans-serif;
   border-collapse: collapse;
   margin: 5px 10px;
   font-size: 0.9em;

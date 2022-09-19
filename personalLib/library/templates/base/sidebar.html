@@ -7,21 +7,37 @@
     <div class="bar-block">
         {% if user.is_authenticated %}
             <a href="{% url 'library:library_home' %}"
-            class="bar-item bar-button">
+               class="bar-item bar-button">
                 <i class="fa-solid fa-house-chimney"></i>&nbsp;&nbsp;Home
             </a>
             <a href="{% url 'library:book_list' %}"
-            class="bar-item bar-button">
+               class="bar-item bar-button">
                 <i class="fa-solid fa-book no-hover"></i>&nbsp;&nbsp;All books
             </a>
             <a href="{% url 'library:author_list' %}"
-            class="bar-item bar-button">
+               class="bar-item bar-button">
                 <i class="fa-solid fa-user-pen"></i>&nbsp;&nbsp;All authors
             </a>
             <a href=""
-                class="bar-item bar-button">
+               class="bar-item bar-button">
                 <i class="fa-solid fa-lock"></i>&nbsp;&nbsp;Admin
             </a>
+            <br>
+            <br>
+            <br>
+            <button class="accordion bar-item bar-button" onclick="myAccFunc()">
+                Catalogation <i class="fa fa-caret-down"></i>
+             </button>
+            <div class="accordion-panel">
+                <a href="{% url 'library:catalog_system' %}"
+                   class="bar-item bar-button">
+                   <i class="fa-solid fa-hashtag"></i>&nbsp;&nbsp;Codification
+                </a>
+                <a href="{% url 'library:catalog_codes' %}"
+                   class="bar-item bar-button">
+                   <i class="fa-solid fa-hashtag"></i>&nbsp;&nbsp;Determinants
+                </a>
+            </div>
             <br>
             <br>
             <br>
@@ -40,3 +56,20 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i=0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
