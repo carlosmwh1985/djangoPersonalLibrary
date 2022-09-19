@@ -13,8 +13,6 @@ class Author(models.Model):
 
     class Meta:
         db_table = 'tblautores'
-    
-    # TODO: add a function to translate family name to the catalog ID...
 
 
 class Publisher(models.Model):

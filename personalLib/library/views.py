@@ -1,3 +1,5 @@
+import unidecode
+
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -72,7 +74,22 @@ class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
         """Add to the context all books associated with this Author"""
         context = super().get_context_data(**kwargs)
         context['books_by'] = Book.objects.filter(autor=self.get_object())
+        context['name_code'] = self.get_name_code()
         return context
+
+    def get_name_code(self):
+        text = unidecode.unidecode(getattr(self.get_object(), 'apellido'))
+        if len(text) < 3:
+            return text[0]
+        num_1 = getattr(
+            AuthorNameCodes.objects.filter(letras__contains=text[1].lower()).first(),
+            'numero'
+        )
+        num_2 = getattr(
+            AuthorNameCodes.objects.filter(letras__contains=text[2].lower()).first(),
+            'numero'
+        )
+        return '{}{}{}'.format(text[0], num_1, num_2)
 
 
 class CatalogSystemView(LoginRequiredMixin, generic.ListView):
@@ -113,3 +130,4 @@ class DeterminantsView(LoginRequiredMixin, generic.ListView):
         context['det_spanish_lit'] = LiteratureInSpanish.objects.all().order_by('id')
         context['det_author_name'] = AuthorNameCodes.objects.all().order_by('numero')
         return context
+
