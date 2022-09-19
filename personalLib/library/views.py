@@ -1,7 +1,9 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Author, DeweySystem, Publisher, Book
+from .models import Author, Publisher, Book
+from .models import DeweySystem, CatalogCodes
+from .models import AuthorNameCodes, HistoryCodes, LanguageCodes, LiteratureCodes, LiteratureInSpanish
 
 
 class HomeView(LoginRequiredMixin, generic.base.TemplateView):
@@ -16,7 +18,7 @@ class HomeView(LoginRequiredMixin, generic.base.TemplateView):
         context = super().get_context_data(**kwargs)
         context['total_books'] = Book.objects.all().count()
         context['total_authors'] = Author.objects.all().count()
-        return 
+        return context
     
 
 class BookListView(LoginRequiredMixin, generic.ListView):
@@ -86,3 +88,28 @@ class CatalogSystemView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         """Return all the Ids and Subjects of the catalog (Dewey System)"""
         return DeweySystem.objects.order_by('id')
+
+
+class DeterminantsView(LoginRequiredMixin, generic.ListView):
+    """View class for the different determinants (Form, Language, History, Author Name),
+    used to catalog the whole library.\n
+    Use it only as a reference"""
+
+    login_url = '/login/'
+    redirect_field_name = 'redirect_to'
+
+    template_name = 'library/catalog_codes.html'
+    context_object_name = 'determinants'
+
+    def get_queryset(self):
+        """Return all the Ids and Subjects of the catalog (Dewey System)"""
+        return CatalogCodes.objects.order_by('id')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['det_language'] = LanguageCodes.objects.all().order_by('num')
+        context['det_history'] = HistoryCodes.objects.all().order_by('num')
+        context['det_literature'] = LiteratureCodes.objects.all().order_by('num')
+        context['det_spanish_lit'] = LiteratureInSpanish.objects.all().order_by('id')
+        context['det_author_name'] = AuthorNameCodes.objects.all().order_by('numero')
+        return context

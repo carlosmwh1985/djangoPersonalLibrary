@@ -10,4 +10,5 @@ urlpatterns = [
     path('book/<int:pk>/', views.BookDetailView.as_view(), name='book_detail'),
     path('author/<int:pk>/', views.AuthorDetailView.as_view(), name='author_detail'),
     path('catalog/system/', views.CatalogSystemView.as_view(), name='catalog_system'),
+    path('catalog/codes/', views.DeterminantsView.as_view(), name='catalog_codes'),
 ]

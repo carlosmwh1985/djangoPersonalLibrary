@@ -577,6 +577,28 @@ i.false {
   background-color: var(--background-cell)!important;
 }
 
+.row-padding:after,
+.row-padding:before {
+  content: "";
+  display: table;
+  clear:both
+}
+
+.row-padding, .row-padding > .third {
+  padding:0 8px
+}
+
+.margin-top{
+  margin-top:16px!important
+}
+
+.card-fourth {
+  float: left;
+  width: 100%
+}
+.card-fourth {
+  width: 25%;
+}
 
 /* To display Images */
 .polaroid {
